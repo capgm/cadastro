@@ -111,7 +111,7 @@ router.post("/usuario",(req,res)=>{
         res.render("usuarios/usuario",{erros:erros})
     }else{
         Usuario.findOne({email:req.body.email}).then((usuario)=>{
-            
+            console.log(usuario)
             if(usuario){
                 req.flash("error_msg", "Já existe um usuário cadastrado com esse e-mail!")
                 res.render("usuarios/usuario")
@@ -130,14 +130,14 @@ router.post("/usuario",(req,res)=>{
                             req.flash("error_msg",erro)
                             res.redirect("usuarios/usuario")
                         }
-
+                        
                         novoUsuario.senha = hash
                         novoUsuario.save().then(()=>{
+                            res.redirect("usuarios/usuario")
                             req.flash("success_msg", "Usuario incluído!")
-                            res.render("usuarios/usuario")
                         }).catch((erro)=>{
-                            req.flash("error_msg",)
                             res.render("usuarios/usuario")
+                            req.flash("error_msg","Erro na inclusão")
                         }) 
                     })
                 })     
