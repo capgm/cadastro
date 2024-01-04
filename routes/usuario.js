@@ -114,7 +114,7 @@ router.post("/usuario",(req,res)=>{
             console.log(usuario)
             if(usuario){
                 req.flash("error_msg", "Já existe um usuário cadastrado com esse e-mail!")
-                res.render("usuarios/usuario")
+                res.redirect("usuarios/usuario")
             }else{
                
                 const novoUsuario = new Usuario({
