@@ -5,7 +5,7 @@ require("../models/Usuario")
 const Usuario = mongoose.model("usuarios")
 const bcrypt = require("bcryptjs")
 const passport = require("passport")
-const {ehAdmin} = require(("../helpers/isLogado"))
+const {ehAdmin} = require(("../helpers/islogado"))
 
 
 /*router.get("/",(req,res)=>{
