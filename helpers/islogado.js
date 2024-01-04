@@ -1,6 +1,6 @@
 module.exports = {
     isLogado: function(req,res,next){
-        if(req.isAutenticated() && req.user.ehAdmin == 'S'){
+        if(req.isAuthenticated() && req.user.ehAdmin == 'S'){
             return next()
         }
 

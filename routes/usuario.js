@@ -5,7 +5,7 @@ require("../models/Usuario")
 const Usuario = mongoose.model("usuarios")
 const bcrypt = require("bcryptjs")
 const passport = require("passport")
-const {ehAdmin} = require(("../helpers/islogado"))
+const {isLogado} = require("../helpers/islogado")
 
 
 /*router.get("/",(req,res)=>{
@@ -35,7 +35,7 @@ router.get("/",(req,res)=>{
     res.render("index/index")
 })
 
-router.get("/lista", (req,res)=>{
+router.get("/lista", isLogado, (req,res)=>{
 
     Usuario.find({}).then((usuarios)=>{
         res.render("usuarios/lista", {usuarios: usuarios})
