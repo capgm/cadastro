@@ -8,7 +8,6 @@ const flash = require("express-flash")
 require("../models/Usuario")
 const Usuario = mongoose.model("usuarios")
 
-
 module.exports = function(passport){
     passport.use(new LocalStrategy({usernameField: 'email', passwordField:'senha'}, (email,senha,done) => {
        
@@ -30,7 +29,6 @@ module.exports = function(passport){
 
         })
     }))
-
 
     passport.serializeUser((usuario, done)=>{
         done(null, usuario.id)
